@@ -6,11 +6,11 @@ import {Link} from 'gatsby'
 
 const mapProductsToItems = products =>
   products.map(
-    ({node: {name, id, meta, mainImage}}) => {
+    ({node: {name, id, meta, mainImage, sku}}) => {
       const price = meta.display_price.with_tax.formatted || null
       return {
         as: Link,
-        to: `/product/${id}/`,
+        to: `/product/${sku}/`,
         childKey: id,
         image: (
           <Image>

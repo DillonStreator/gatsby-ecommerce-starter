@@ -24,7 +24,7 @@ export default ({items, removeFromCart, loading, completed}) => {
       </Message>
     )
   const mapCartItemsToItems = items =>
-    items.map(({id, product_id, name, quantity, meta, image}) => {
+    items.map(({id, sku, name, quantity, meta, image, description}) => {
       const price = meta.display_price.with_tax.unit.formatted || ''
       const imageUrl = image.href || '/static/moltin-light-hex.svg'
 
@@ -49,7 +49,7 @@ export default ({items, removeFromCart, loading, completed}) => {
         childKey: id,
         header: (
           <Item.Header>
-            <Link to={`/product/${product_id}/`}>{name}</Link>
+            <Link to={`/product/${sku}/`}>{name}</Link>
           </Item.Header>
         ),
         image: (
@@ -62,7 +62,7 @@ export default ({items, removeFromCart, loading, completed}) => {
           </React.Fragment>
         ),
         meta: `${quantity}x ${price}`,
-        description: 'Some more information goes here....',
+        description,
         extra: (
           <Button
             basic

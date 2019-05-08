@@ -19,6 +19,8 @@ const StoreIndex = ({location}) => {
         edges {
           node {
             id
+            slug
+            sku
             name
             description
             mainImageHref
